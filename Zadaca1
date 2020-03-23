@@ -1,0 +1,113 @@
+class Razlomak(object):
+
+    def __init__(self, brojnik, nazivnik):
+        self.brojnik=brojnik
+        self.nazivnik=nazivnik
+
+
+    @property
+    def brojnik(self):
+        return self._brojnik
+
+    @brojnik.setter
+    def brojnik(self, value):
+        self._brojnik=value
+
+
+    @property
+    def nazivnik(self):
+        return self._nazivnik
+
+    @nazivnik.setter
+    def nazivnik(self, value):
+        self._nazivnik=value
+
+    def skrati(self):
+       najveciDjelitelj=1
+
+       for i in range(1, self.brojnik + 1):
+        if(self.brojnik % i == 0 and self.nazivnik % i == 0):
+            najveciDjelitelj = i
+            i = i + 1
+
+            return self.brojnik / najveciDjelitelj, self.nazivnik / najveciDjelitelj
+
+
+    def __repr__(self):
+        return "Razlomak(" + repr(self._brojnik) + "," + repr(self._nazivnik) + ")"
+
+    def __str__(self):
+        return "Razlomak" + str(self._brojnik) + "|" + str(self._nazivnik)
+
+    def __eq__(self,other):
+        return self.brojnik/self.nazivnik == other.brojnik/other.nazivnik
+
+    def __it__(self,other):
+        return self.brojnik/self.nazivnik < other.brojnik/other.nazivnik
+
+    def __le__(self,other):
+        return self.brojnik/self.nazivnik <= other.brojnik/other.nazivnik
+
+
+    """mnozenje"""
+    def __mul__(self,other):
+        return Razlomak(self.brojnik * other.brojnik, self.nazivnik * other.nazivnik)
+
+    """x % y"""r+r1
+    def __mod__(self,other):
+        return Razlomak(self.brojnik * other.nazivnik, self.nazivnik * other.brojnik)
+
+
+    """zbrajanje"""
+    def __add__(self,other):
+        a=self.nazivnik
+        b=other.nazivnik
+        najmanjiVisekratnik=1
+        if(a<b):
+            najmanjiVisekratnik=a
+            if(b%a==0):
+                b=b/a
+            else:
+                b=b
+            najmanjiVisekratnik=a*b
+        else:
+            najmanjiVisekratnik=b
+            if(a%b==0):
+                a=a/b
+            else:
+                a=a
+            najmanjiVisekratnik=a*b
+
+        return Razlomak(najmanjiVisekratnik/self.nazivnik * self.brojnik + najmanjiVisekratnik /other.nazivnik * other.brojnik, najmanjiVisekratnik)
+
+
+    """oduzimanje"""
+    def __sub__(self,other):
+        a=self.nazivnik
+        b=other.nazivnik
+        najmanjiVisekratnik=1
+        if(a<b):
+            najmanjiVisekratnik=a
+            if(b%a==0):
+                b=b/a
+            else:
+                b=b
+            najmanjiVisekratnik=a*b
+        else:
+            najmanjiVisekratnik=b
+            if(a%b==0):
+                a=a/b
+            else:
+                a=a
+            najmanjiVisekratnik=a*b
+
+        return Razlomak(najmanjiVisekratnik /self.nazivnik*self.brojnik - najmanjiVisekratnik / other.nazinik * other.brojnik, najmanjiVisekratnik)
+
+
+
+r= Razlomak(1,4)
+r1= Razlomak(3,8)
+
+
+
+
