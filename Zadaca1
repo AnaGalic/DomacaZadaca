@@ -53,7 +53,7 @@ class Razlomak(object):
     def __mul__(self,other):
         return Razlomak(self.brojnik * other.brojnik, self.nazivnik * other.nazivnik)
 
-    """x % y"""r+r1
+    """x % y"""
     def __mod__(self,other):
         return Razlomak(self.brojnik * other.nazivnik, self.nazivnik * other.brojnik)
 
